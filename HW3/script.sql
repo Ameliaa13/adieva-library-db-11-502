@@ -38,7 +38,7 @@ create table loans (
 alter table readers add column phone varchar(20);
 
 alter table books add column price numeric(10, 2) default 0.00;
-
+alter table books add column amount int default 0;
 alter table readers alter column email set not null;
 
 alter table loans add column return_date date;
@@ -87,6 +87,12 @@ where id = 1;
 update books 
 set price = price * 1.10 
 where publication_year < 1900;
+
+update books set amount = 3
+where id in (1,3);
+
+update books set amount = 5
+where id = 2;
 
 -- проставляем дату возврата
 update loans 
